@@ -1,0 +1,54 @@
+<!-- Model Add -->
+<div>
+    <button nz-button nzType="vertical" (click)="showModal()"><span>Add District </span></button>
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="Add Province,District" (nzOnCancel)="CancelClick()" (nzOnOk)="AddClick()">
+    <ng-container *nzModalContent>
+      <span>Province</span>
+    <div>
+  <nz-select nzPlaceHolder="Chọn tỉnh thành" [(ngModel)]="provincename">
+  <nz-option *ngFor="let prolist of ProvinceList" [nzLabel]="prolist.provinceName" [nzValue]="prolist.provinceName"></nz-option>
+  </nz-select>
+</div>
+      <p> <input nz-input placeholder="District" [(ngModel)]="districtname" /></p>
+    </ng-container>
+  </nz-modal>  
+</div>
+
+<!-- Model Edit -->
+<div><nz-modal [(nzVisible)]="isVisible2" nzTitle="Edit District" (nzOnCancel)="CancelClick2()" (nzOnOk)="UpdateClick()">
+  <ng-container *nzModalContent>
+  <p> <input nz-input [placeholder]="districtname" [(ngModel)]="districtname" /></p>
+  </ng-container>
+</nz-modal>
+</div>
+
+<!-- Search -->
+<div class="search-box">
+  <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+  <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Search</button>
+  <button nz-button nzSize="small" (click)="reset()">Reset</button>
+</div>
+<!-- Data Table -->
+<div>
+    <nz-table #nzTable [nzData]="ProvinceFullList" nzTableLayout="fixed">
+        <thead>
+          <tr>
+            <th>
+              Province
+            </th>
+            <th>District</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of nzTable.data">
+            <td>{{ data.provinceName }}</td>
+            <td>{{ data.districtName }}</td>
+            <td><a (click) ="DeleteClick(data)">Delete</a><nz-divider nzType="vertical"></nz-divider>
+              <a (click) ="showModal2(data.id,data.districtName,data.provinceName,data.provinceID)">Update</a>
+          </td>
+          </tr>
+        </tbody>
+      </nz-table>
+</div>
+

@@ -1,0 +1,41 @@
+<!-- Add -->
+<div>
+    <button nz-button nzType="vertical" (click)="showModal()"><span>Add Province </span></button>
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="Add Province" (nzOnCancel)="CancelClick()" (nzOnOk)="AddClick()">
+    <ng-container *nzModalContent>
+      <p> <input nz-input placeholder="Province" [(ngModel)]="provincename"/></p>
+    </ng-container>
+  </nz-modal>  
+</div>
+<!-- Edit -->
+<div><nz-modal [(nzVisible)]="isVisible2" nzTitle="Edit Province" (nzOnCancel)="CancelClick2()" (nzOnOk)="UpdateClick()">
+    <ng-container *nzModalContent>
+    <p> <input nz-input [placeholder]="provincename" [(ngModel)]="provincename" /></p>
+    </ng-container>
+  </nz-modal>
+  </div>
+<!-- Table -->
+<nz-table #basicTable [nzData]="ProvinceList">
+    <thead>
+      <tr>
+        <th>Province ID</th>
+        <th>Province Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dataItem of basicTable.data">
+        <td>{{dataItem.id}}</td>
+        <td>{{dataItem.provinceName}}</td>
+        <td>
+          <button nz-button nzType="text" (click) ="showModal2(dataItem.id,dataItem.provinceName)">
+            <span nz-icon nzType="form" nzTheme="outline"></span>
+          </button> 
+          <nz-divider nzType="vertical" click=del></nz-divider>
+          <button nz-button nzType="text" (click)="deleteClick(dataItem)">
+            <span nz-icon nzType="delete" nzTheme="outline">
+          </span>
+        </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
