@@ -1,4 +1,5 @@
 ﻿using WebApiTest.dto;
+using WebApiTest.Interfaces;
 using WebApiTest.Model;
 
 namespace WebApiTest.Repository
@@ -12,43 +13,42 @@ namespace WebApiTest.Repository
                 throw new ArgumentNullException(nameof(context));
         }
 
-        public ModelDistrict CreateDistrict(Districtdto districtdto)
+        public District CreateDistrict(DistrictDto districtDto)
         {
-            var data = new ModelDistrict()
+            var data = new District()
             {
-                Id = districtdto.Id,
-                DistrictName = districtdto.DistrictName,
-                ProvinceID = districtdto.ProvinceID,
+                Id = districtDto.Id,
+                DistrictName = districtDto.DistrictName,
+                ProvinceID = districtDto.ProvinceID,
                 Province = null
             };
             _context.Districts.Add(data);
             _context.SaveChanges();
             return data;
         }
-        public ModelDistrict DeleteDistrict(ModelDistrict objDistrict)
+        public District DeleteDistrict(District objDistrict)
         {
             _context.Remove(objDistrict);
             _context.SaveChanges();
             return objDistrict;
         }
 
-        public bool DistrictExists(int districtid)
+        public bool DistrictExists(int districtId)
         {
-            return _context.Districts.Any(r => r.Id == districtid);
+            return _context.Districts.Any(r => r.Id == districtId);
         }
-
-        public ICollection<ModelDistrict> GetDistrict()
+        public ICollection<District> GetDistrict()
         {
             return _context.Districts.ToList();
         }
-        public ICollection<ModelDistrict> GetDistrict(int provinceid)
+        public ICollection<District> GetDistrict(int provinceid)
         {
             return _context.Districts.Where(p => p.ProvinceID == provinceid).ToList();
         }
 
-        public bool ProvinceExists(int provinceid)
+        public bool ProvinceExists(int provinceId)
         {
-            return _context.Provinces.Any(r => r.Id == provinceid);
+            return _context.Provinces.Any(r => r.Id == provinceId);
             
         }
       

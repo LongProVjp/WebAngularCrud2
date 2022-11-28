@@ -5,8 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Runtime.Intrinsics.Arm;
 using WebApiTest.dto;
+using WebApiTest.Interfaces;
 using WebApiTest.Model;
-using WebApiTest.Repository;
 namespace WebApiTest.Controllers
 {
     [Route("api/[controller]")]
@@ -29,11 +29,11 @@ namespace WebApiTest.Controllers
         [HttpGet]
         public IActionResult GetProvinces()
         {
-            return Ok(_mapper.Map<List<Provincedto>>(_provinceRepository.GetProvinces()));
+            return Ok(_mapper.Map<List<ProvinceDto>>(_provinceRepository.GetProvinces()));
         }
         [HttpGet("{Id}")]
         public IActionResult GetProvincebyID(int Id) {
-            var province = _mapper.Map<Provincedto>(_provinceRepository.GetProvincebyID(Id));
+            var province = _mapper.Map<ProvinceDto>(_provinceRepository.GetProvincebyID(Id));
             if (province == null)
             {
                 return NotFound();
@@ -45,7 +45,7 @@ namespace WebApiTest.Controllers
         [HttpGet("GetbyName/{provinceName}")]
         public IActionResult GetProvincebyName(string provinceName)
         {
-            var province = _mapper.Map<Provincedto>(_provinceRepository.GetProvincebyName(provinceName));
+            var province = _mapper.Map<ProvinceDto>(_provinceRepository.GetProvincebyName(provinceName));
             if (province == null)
             {
                 return NotFound();
@@ -54,35 +54,35 @@ namespace WebApiTest.Controllers
         }
         //Add
         [HttpPost]
-        public IActionResult PostProvince(Provincedto provincedto)
+        public IActionResult PostProvince(ProvinceDto provinceDto)
         {
-            if (_context.Provinces.Any(e => e.ProvinceName == provincedto.ProvinceName))
+            if (_context.Provinces.Any(e => e.ProvinceName == provinceDto.ProvinceName))
             {
                 return NoContent();
             }
-            if (provincedto.ProvinceName == null)
+            if (provinceDto.ProvinceName == null)
             {
                 return BadRequest();
             }
-            var result = _mapper.Map<ModelProvince>(_provinceRepository.CreateProvince(provincedto));
+            var result = _mapper.Map<Province>(_provinceRepository.CreateProvince(provinceDto));
             return Ok(result);
         }
         //Update
-        [HttpPut("{provinceid}")]
-        public IActionResult PutProvince(int provinceid, Provincedto provincedto)
+        [HttpPut("{provinceId}")]
+        public IActionResult PutProvince(int provinceId, ProvinceDto provinceDto)
         {
-            if (provinceid != provincedto.Id)
+            if (provinceId != provinceDto.Id)
             {
                 return BadRequest();
             }
-            _context.Entry(_mapper.Map<ModelProvince>(provincedto)).State = EntityState.Modified;
+            _context.Entry(_mapper.Map<Province>(provinceDto)).State = EntityState.Modified;
             try
             {
                 _context.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!_provinceRepository.ProvinceExists(provinceid))
+                if (!_provinceRepository.ProvinceExists(provinceId))
                 {
                     return NotFound();
                 }
@@ -94,10 +94,10 @@ namespace WebApiTest.Controllers
             return Ok();
         }
         //Delete
-        [HttpDelete("{provinceid}")]
-        public IActionResult DeleteProvince(int provinceid)
+        [HttpDelete("{provinceId}")]
+        public IActionResult DeleteProvince(int provinceId)
         {
-            var province = _context.Provinces.Find(provinceid);
+            var province = _context.Provinces.Find(provinceId);
             if (province == null)
             {
                 return NotFound();

@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApiTest.dto;
+using WebApiTest.Interfaces;
 using WebApiTest.Model;
-using WebApiTest.Repository;
 
 namespace WebApiTest.Controllers
 {
@@ -28,17 +28,17 @@ namespace WebApiTest.Controllers
         [HttpGet]
         public IActionResult GetDistrict()
         {
-            return Ok(_mapper.Map<List<Districtdto>>(_districtRepository.GetDistrict()));
+            return Ok(_mapper.Map<List<DistrictDto>>(_districtRepository.GetDistrict()));
         }
 
-        [HttpGet("{provinceid}")]
-        public IActionResult GetDistrictByProvinceID(int provinceid)
+        [HttpGet("{provinceId}")]
+        public IActionResult GetDistrictByProvinceID(int provinceId)
         {
-            if (!_districtRepository.ProvinceExists(provinceid))
+            if (!_districtRepository.ProvinceExists(provinceId))
             {
                 return NotFound();
             }
-            var result = _mapper.Map<List<Districtdto>>(_districtRepository.GetDistrict(provinceid));
+            var result = _mapper.Map<List<DistrictDto>>(_districtRepository.GetDistrict(provinceId));
             return Ok(result);
         }
 
@@ -63,57 +63,57 @@ namespace WebApiTest.Controllers
         [HttpGet("GetAllProvince")]
         public IActionResult GetAllProvince()
         {
-            return Ok(_mapper.Map<List<Provincedto>>(_provinceRepository.GetProvinces()));
+            return Ok(_mapper.Map<List<ProvinceDto>>(_provinceRepository.GetProvinces()));
         }
 
         [HttpPost]
-        public IActionResult PostDistrict(Districtdto districtdto)
+        public IActionResult PostDistrict(DistrictDto districtDto)
         {
-            if (!_districtRepository.ProvinceExists(districtdto.ProvinceID))
+            if (!_districtRepository.ProvinceExists(districtDto.ProvinceID))
             {
                 return BadRequest("Province not Exists");
             }
-            if (_context.Districts.Any(e => (e.ProvinceID == districtdto.ProvinceID) && (e.DistrictName == districtdto.DistrictName)))
+            if (_context.Districts.Any(e => (e.ProvinceID == districtDto.ProvinceID) && (e.DistrictName == districtDto.DistrictName)))
             {
                 return BadRequest("District already exist");
             }
-            var result = _mapper.Map<ModelDistrict>(_districtRepository.CreateDistrict(districtdto));
+            var result = _mapper.Map<District>(_districtRepository.CreateDistrict(districtDto));
             return Ok(result);
         }
 
-        [HttpDelete("{districtid}")]
-        public IActionResult DeleteDistrict(int districtid)
+        [HttpDelete("{districtId}")]
+        public IActionResult DeleteDistrict(int districtId)
         {
-            var district = _context.Districts.Find(districtid);
+            var district = _context.Districts.Find(districtId);
             if (district == null)
             {
                 return NotFound();
             }
             return Ok(_districtRepository.DeleteDistrict(district));
         }
-        [HttpPut("{districtid}")]
-        public IActionResult PutDistrict(int districtid, Districtdto districtdto)
+        [HttpPut("{districtId}")]
+        public IActionResult PutDistrict(int districtId, DistrictDto districtDto)
         {
-            if (districtid != districtdto.Id)
+            if (districtId != districtDto.Id)
             {
                 return BadRequest();
             }
-            if (!_districtRepository.ProvinceExists(districtdto.ProvinceID))
+            if (!_districtRepository.ProvinceExists(districtDto.ProvinceID))
             {
                 return BadRequest();
             }
-            if (_context.Districts.Any(e => (e.ProvinceID == districtdto.ProvinceID) && (e.DistrictName== districtdto.DistrictName)))
+            if (_context.Districts.Any(e => (e.ProvinceID == districtDto.ProvinceID) && (e.DistrictName== districtDto.DistrictName)))
             {
                 return BadRequest();
             }
-            _context.Entry(_mapper.Map<ModelDistrict>(districtdto)).State = EntityState.Modified;
+            _context.Entry(_mapper.Map<District>(districtDto)).State = EntityState.Modified;
             try
             {
                 _context.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!_districtRepository.DistrictExists(districtid))
+                if (!_districtRepository.DistrictExists(districtId))
                 {
                     return NotFound();
                 }

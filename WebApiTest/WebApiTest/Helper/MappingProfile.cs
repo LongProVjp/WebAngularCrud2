@@ -9,10 +9,10 @@ namespace WebApiTest.Helper
     {
         public MappingProfile()
         {
-            CreateMap<ModelProvince, Provincedto>();
-            CreateMap<Provincedto, ModelProvince>();
-            CreateMap<ModelDistrict, Districtdto>();
-            CreateMap<Districtdto,ModelDistrict>();
+            CreateMap<Province, ProvinceDto>();
+            CreateMap<ProvinceDto, Province>();
+            CreateMap<District, DistrictDto>();
+            CreateMap<DistrictDto,District>();
         }
     }
 }

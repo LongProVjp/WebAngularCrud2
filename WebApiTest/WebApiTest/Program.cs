@@ -2,6 +2,7 @@ global using WebApiTest.Data;
 global using Microsoft.EntityFrameworkCore;
 using WebApiTest.Repository;
 using System.Text.Json.Serialization;
+using WebApiTest.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

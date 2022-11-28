@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "skltlHW7QHOwJT0caoAuUz/Xjp+y+4j6wCdRXUxS+tRUeQ2Zj7bAv6PdkziW3FNQsNeJp3bQpnuH6PZn+o/1VA==",
+  "dgSpecHash": "G04HLpLKKgH3iL0n7YHJ9TcgKSCsaFgjJ7W1OVVPrsrsJnjZrCr4QVm4p1BMw2gDf8hDdsyHnryDyT6tNCC7+w==",
   "success": true,
-  "projectFilePath": "E:\\WebAngularTest\\API\\WebApiTest\\WebApiTest\\WebApiTest.csproj",
+  "projectFilePath": "E:\\Angular ant\\WebApiTest\\WebApiTest\\WebApiTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\CPC\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\CPC\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

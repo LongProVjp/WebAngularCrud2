@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using WebApiTest.dto;
+using WebApiTest.Interfaces;
 using WebApiTest.Model;
 
 namespace WebApiTest.Repository
@@ -15,40 +16,40 @@ namespace WebApiTest.Repository
             _mapper = mapper;
 
         }
-        public ModelProvince CreateProvince(Provincedto provincedto)
+        public Province CreateProvince(ProvinceDto provinceDto)
         {
 
-            var data = new ModelProvince()
+            var data = new Province()
             {
-                Id = provincedto.Id,
-                ProvinceName = provincedto.ProvinceName,
+                Id = provinceDto.Id,
+                ProvinceName = provinceDto.ProvinceName,
                 District = null
             };
             _context.Provinces.Add(data);
             _context.SaveChanges();
             return data;
         }
-        public ICollection<ModelProvince> GetProvinces()
+        public ICollection<Province> GetProvinces()
         {
             return _context.Provinces.ToList();
         }
-        public bool ProvinceExists(int provinceid)
+        public bool ProvinceExists(int provinceId)
         {
-            return _context.Provinces.Any(r => r.Id == provinceid);
+            return _context.Provinces.Any(r => r.Id == provinceId);
         }
-        public ModelProvince GetProvincebyName(string provinceName)
+        public Province GetProvincebyName(string provinceName)
         {
             return _context.Provinces.Where(p => p.ProvinceName == provinceName).FirstOrDefault();
         }
 
-        public ModelProvince DeleteProvince(ModelProvince objProvince)
+        public Province DeleteProvince(Province objProvince)
         {
             _context.Remove(objProvince);
             _context.SaveChanges();
             return objProvince;
         }
 
-        public ModelProvince GetProvincebyID(int Id)
+        public Province GetProvincebyID(int Id)
         {
             return _context.Provinces.Where(p => p.Id == Id).FirstOrDefault();
         }

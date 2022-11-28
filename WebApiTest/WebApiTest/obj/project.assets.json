@@ -3746,11 +3746,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\WebAngularTest\\API\\WebApiTest\\WebApiTest\\WebApiTest.csproj",
+      "projectUniqueName": "E:\\Angular ant\\WebApiTest\\WebApiTest\\WebApiTest.csproj",
       "projectName": "WebApiTest",
-      "projectPath": "E:\\WebAngularTest\\API\\WebApiTest\\WebApiTest\\WebApiTest.csproj",
+      "projectPath": "E:\\Angular ant\\WebApiTest\\WebApiTest\\WebApiTest.csproj",
       "packagesPath": "C:\\Users\\CPC\\.nuget\\packages\\",
-      "outputPath": "E:\\WebAngularTest\\API\\WebApiTest\\WebApiTest\\obj\\",
+      "outputPath": "E:\\Angular ant\\WebApiTest\\WebApiTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
