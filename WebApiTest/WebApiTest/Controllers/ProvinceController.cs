@@ -25,12 +25,20 @@ namespace WebApiTest.Controllers
             _mapper = mapper;
             _context = context;
         }
-        //Get all
+        /// <summary>
+        /// Get all
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult GetProvinces()
         {
             return Ok(_mapper.Map<List<ProvinceDto>>(_provinceRepository.GetProvinces()));
         }
+        /// <summary>
+        /// GetbyID
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpGet("{Id}")]
         public IActionResult GetProvincebyID(int Id) {
             var province = _mapper.Map<ProvinceDto>(_provinceRepository.GetProvincebyID(Id));
@@ -41,7 +49,11 @@ namespace WebApiTest.Controllers
             return Ok(province);
 
         }
-        //Search
+        /// <summary>
+        /// Searchbyname
+        /// </summary>
+        /// <param name="provinceName"></param>
+        /// <returns></returns>
         [HttpGet("GetbyName/{provinceName}")]
         public IActionResult GetProvincebyName(string provinceName)
         {
@@ -52,7 +64,11 @@ namespace WebApiTest.Controllers
             }
             return Ok(province);
         }
-        //Add
+        /// <summary>
+        /// Add
+        /// </summary>
+        /// <param name="provinceDto"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult PostProvince(ProvinceDto provinceDto)
         {
@@ -67,7 +83,12 @@ namespace WebApiTest.Controllers
             var result = _mapper.Map<Province>(_provinceRepository.CreateProvince(provinceDto));
             return Ok(result);
         }
-        //Update
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <param name="provinceId"></param>
+        /// <param name="provinceDto"></param>
+        /// <returns></returns>
         [HttpPut("{provinceId}")]
         public IActionResult PutProvince(int provinceId, ProvinceDto provinceDto)
         {
@@ -93,7 +114,11 @@ namespace WebApiTest.Controllers
             }
             return Ok();
         }
-        //Delete
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <param name="provinceId"></param>
+        /// <returns></returns>
         [HttpDelete("{provinceId}")]
         public IActionResult DeleteProvince(int provinceId)
         {

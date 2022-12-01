@@ -25,12 +25,20 @@ namespace WebApiTest.Controllers
             _provinceRepository = provinceRepository;
 
         }
+        /// <summary>
+        /// GetAll
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult GetDistrict()
         {
             return Ok(_mapper.Map<List<DistrictDto>>(_districtRepository.GetDistrict()));
         }
-
+        /// <summary>
+        /// Getdistrictbyprovinceid
+        /// </summary>
+        /// <param name="provinceId"></param>
+        /// <returns></returns>
         [HttpGet("{provinceId}")]
         public IActionResult GetDistrictByProvinceID(int provinceId)
         {
@@ -41,7 +49,10 @@ namespace WebApiTest.Controllers
             var result = _mapper.Map<List<DistrictDto>>(_districtRepository.GetDistrict(provinceId));
             return Ok(result);
         }
-
+        /// <summary>
+        /// Get district with province
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("withProvince")]
         public IActionResult GetDistrictWithProvince()
         {
@@ -59,13 +70,20 @@ namespace WebApiTest.Controllers
 
             return Ok(data);
         }
-
+        /// <summary>
+        /// Get all province
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetAllProvince")]
         public IActionResult GetAllProvince()
         {
             return Ok(_mapper.Map<List<ProvinceDto>>(_provinceRepository.GetProvinces()));
         }
-
+        /// <summary>
+        /// Add District
+        /// </summary>
+        /// <param name="districtDto"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult PostDistrict(DistrictDto districtDto)
         {
@@ -80,7 +98,11 @@ namespace WebApiTest.Controllers
             var result = _mapper.Map<District>(_districtRepository.CreateDistrict(districtDto));
             return Ok(result);
         }
-
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <param name="districtId"></param>
+        /// <returns></returns>
         [HttpDelete("{districtId}")]
         public IActionResult DeleteDistrict(int districtId)
         {
@@ -91,6 +113,12 @@ namespace WebApiTest.Controllers
             }
             return Ok(_districtRepository.DeleteDistrict(district));
         }
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <param name="districtId"></param>
+        /// <param name="districtDto"></param>
+        /// <returns></returns>
         [HttpPut("{districtId}")]
         public IActionResult PutDistrict(int districtId, DistrictDto districtDto)
         {

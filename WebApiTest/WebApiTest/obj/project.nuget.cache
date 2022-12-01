@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "G04HLpLKKgH3iL0n7YHJ9TcgKSCsaFgjJ7W1OVVPrsrsJnjZrCr4QVm4p1BMw2gDf8hDdsyHnryDyT6tNCC7+w==",
+  "dgSpecHash": "KgR5z3ls7F2w1OxS84qJvwG4owStpk8MfIZkC3RyhZqFgROfdfcmV2xnc0qMWSNeoeB1frB3CZuFanpiHa7kUA==",
   "success": true,
   "projectFilePath": "E:\\Angular ant\\WebApiTest\\WebApiTest\\WebApiTest.csproj",
   "expectedPackageFiles": [
@@ -19,6 +19,7 @@
     "C:\\Users\\CPC\\.nuget\\packages\\microsoft.entityframeworkcore.design\\7.0.0\\microsoft.entityframeworkcore.design.7.0.0.nupkg.sha512",
     "C:\\Users\\CPC\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.0\\microsoft.entityframeworkcore.relational.7.0.0.nupkg.sha512",
     "C:\\Users\\CPC\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.0\\microsoft.entityframeworkcore.sqlserver.7.0.0.nupkg.sha512",
+    "C:\\Users\\CPC\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.0\\microsoft.entityframeworkcore.tools.7.0.0.nupkg.sha512",
     "C:\\Users\\CPC\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\CPC\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\CPC\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
