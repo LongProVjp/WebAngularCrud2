@@ -12,7 +12,6 @@ namespace WebApiTest.Repository
             _context = context ??
                 throw new ArgumentNullException(nameof(context));
         }
-
         public District CreateDistrict(DistrictDto districtDto)
         {
             var data = new District()
