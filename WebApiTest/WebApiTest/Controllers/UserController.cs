@@ -20,7 +20,11 @@ namespace WebApiTest.Controllers
             _configuration = config;
             _userRepository = userRepository;
         }
-
+        /// <summary>
+        /// User Login
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Post(User data)
         {
@@ -53,7 +57,11 @@ namespace WebApiTest.Controllers
             );
             return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
         }
-
+        /// <summary>
+        /// Add User
+        /// </summary>
+        /// <param name="User"></param>
+        /// <returns></returns>
         [HttpPost("Add")]
         public ActionResult AddUser(User User)
         {
