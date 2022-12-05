@@ -73,7 +73,6 @@ export class ProvinceComponent implements OnInit {
 
   }
   search(): void {
-    this.visible = false;
     this.ProvinceFullList = this.ProvinceFullList.filter((item: any) => item.provinceName.indexOf(this.searchValue) !== -1);
   }
 
