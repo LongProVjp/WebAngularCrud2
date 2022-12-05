@@ -265,3 +265,4 @@ E:\Angular ant\WebApiTest\WebApiTest\obj\Debug\net6.0\refint\WebApiTest.dll
 E:\Angular ant\WebApiTest\WebApiTest\obj\Debug\net6.0\WebApiTest.pdb
 E:\Angular ant\WebApiTest\WebApiTest\obj\Debug\net6.0\WebApiTest.genruntimeconfig.cache
 E:\Angular ant\WebApiTest\WebApiTest\obj\Debug\net6.0\ref\WebApiTest.dll
+E:\Angular ant\WebApiTest\WebApiTest\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

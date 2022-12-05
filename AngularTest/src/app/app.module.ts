@@ -19,6 +19,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 registerLocaleData(vi);
 
@@ -41,7 +42,8 @@ registerLocaleData(vi);
     NzTableModule,
     NzDividerModule,
     NzModalModule,
-    NzDropDownModule
+    NzDropDownModule,
+    NzInputModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: vi_VN }

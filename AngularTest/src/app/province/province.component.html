@@ -44,8 +44,14 @@
           <tr *ngFor="let data of nzTable.data">
             <td>{{ data.provinceName }}</td>
             <td>{{ data.districtName }}</td>
-            <td><a (click) ="DeleteClick(data)">Delete</a><nz-divider nzType="vertical"></nz-divider>
-              <a (click) ="showModal2(data.id,data.districtName,data.provinceName,data.provinceID)">Update</a>
+            <td>
+              <button nz-button nzType="text" (click) ="showModal2(data.id,data.districtName,data.provinceName,data.provinceID)">
+                <span nz-icon nzType="form" nzTheme="outline"></span>
+              </button>
+              <nz-divider nzType="vertical"></nz-divider>
+              <button nz-button nzType="text" (click) ="DeleteClick(data)">
+                <span nz-icon nzType="delete" nzTheme="outline"></span>
+              </button>
           </td>
           </tr>
         </tbody>

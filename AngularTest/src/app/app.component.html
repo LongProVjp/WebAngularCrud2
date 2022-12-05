@@ -1,7 +1,44 @@
-
+<!-- Logout -->
+<div style= "text-align :right; " *ngIf="Login"> 
+    <button nz-button nzType="vertical" (click)="LogoutClick()"><span>Logout </span></button>
+</div>
+<!-- Login -->
+<div *ngIf="!Login">
+    <h2>LOGIN</h2>
+    <div class="center-box"> 
+      <div class="example-input">
+      <input nz-input placeholder="Username" [(ngModel)]="Username" nzSize="default" (keyup.enter)="LoginClick()" />    
+      <br />
+      <nz-input-group  [nzSuffix]="suffixTemplate">
+        <input
+          [type]="PasswordVisible ? 'text' : 'password'"
+          nz-input
+          placeholder="Password"
+          [(ngModel)]="Password"
+          nzSize="default"
+          (keyup.enter)="LoginClick()"
+        />
+      </nz-input-group>
+      <ng-template #suffixTemplate>
+        <span
+          nz-icon
+          [nzType]="PasswordVisible ? 'eye-invisible' : 'eye'"
+          (click)="PasswordVisible = !PasswordVisible"
+        ></span>
+      </ng-template>
+    </div> 
+    <div > 
+      <button nz-button nzType="vertical"  (click)="LoginAddClick()"><span>Register </span></button> 
+      <nz-divider nzType="vertical"></nz-divider><nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="vertical" (click)="LoginClick()"><span>Login </span></button> 
+    </div>
+   </div>
+  </div>
+<div *ngIf="Login">
 <h2>WEB QUẢN LÍ TỈNH THÀNH,QUẬN HUYỆN </h2> 
 <button nz-button nzType="primary" routerLink="provincelist" >ProvinceList</button>
 <button nz-button nzType="primary" routerLink="province" >Province,District</button>
 <br>
 <br>
 <router-outlet></router-outlet>
+</div>
